@@ -58,6 +58,18 @@ extension Data {
             return nil
         }
     }
+     
+    static func decodeJsonResponse<T>(type: T.Type, data:Data) -> T? where T : Codable {
+        do {
+            
+            let decodedObj = try JSONDecoder().decode(T.self, from: data)
+            return decodedObj
+        }
+        catch {
+            print(error)
+            return nil
+        }
+    }
 }
 
 
